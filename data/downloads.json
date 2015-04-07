@@ -27,8 +27,8 @@
     "data": [
       {
         "wordSize": "64-bit",
-        "installerPath": "downloads/kryvos_0.9.6_linux_x86_64_setup",
-        "archivePath": "downloads/kryvos_0.9.6_linux_x86_64.tar.gz"
+        "installerPath": "downloads/kryvos_0.9.8_linux_x86_64_setup",
+        "archivePath": "downloads/kryvos_0.9.8_linux_x86_64.tar.gz"
       }
     ]
   },
