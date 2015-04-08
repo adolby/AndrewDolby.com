@@ -7,14 +7,14 @@
     "data": [
       {
         "wordSize": "64-bit",
-        "installerPath": "downloads/kryvos_0.9.6_windows_x64_setup.exe",
-        "archivePath": "downloads/kryvos_0.9.6_windows_x64.zip"
+        "installerPath": "downloads/kryvos_0.9.8_windows_x64_setup.exe",
+        "archivePath": "downloads/kryvos_0.9.8_windows_x64.zip"
       },
 
       {
         "wordSize": "32-bit",
-        "installerPath": "downloads/kryvos_0.9.6_windows_x86_setup.exe",
-        "archivePath": "downloads/kryvos_0.9.6_windows_x86.zip"
+        "installerPath": "downloads/kryvos_0.9.8_windows_x86_setup.exe",
+        "archivePath": "downloads/kryvos_0.9.8_windows_x86.zip"
       }
     ]
   },
