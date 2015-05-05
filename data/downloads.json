@@ -40,8 +40,8 @@
 
     "data": [
       {
-        "wordSize": "32-bit",
-        "archivePath": "downloads/kryvos_0.9.6.dmg"
+        "wordSize": "64-bit",
+        "archivePath": "downloads/Kryvos_0.9.6.dmg"
       }
     ]
   }
