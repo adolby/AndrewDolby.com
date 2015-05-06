@@ -2,6 +2,7 @@
   {
     "name": "Windows",
     "icon": "windows",
+    "archiveIcon": "fa fa-file-archive-o",
     "archiveFile": "Zip File",
 
     "data": [
@@ -22,6 +23,7 @@
   {
     "name": "Linux",
     "icon": "linux",
+    "archiveIcon": "fa fa-file-archive-o",
     "archiveFile": "Tar.gz File",
 
     "data": [
@@ -36,6 +38,7 @@
   {
     "name": "Mac OS X",
     "icon": "apple",
+    "archiveIcon": "ionicons ion-disc",
     "archiveFile": "Disk Image File",
 
     "data": [

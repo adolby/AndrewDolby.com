@@ -16,8 +16,13 @@
             <p class="sub-heading">{{data.wordSize}}</p>
           </li>
           <li>
-            <a class="btn btn-outline" ng-show="data.installerPath" ng-href="{{data.installerPath}}" download><i class="ionicons ion-monitor"></i>Installer</a>
-            <a class="btn btn-outline" ng-href="{{data.archivePath}}" download><i class="ionicons ion-disc"></i>{{os.archiveFile}}</a>
+            <a class="btn btn-outline" ng-show="data.installerPath" ng-href="{{data.installerPath}}" download>
+              <i class="ionicons ion-monitor"></i>Installer
+            </a>
+
+            <a class="btn btn-outline" ng-href="{{data.archivePath}}" download>
+              <i class="{{os.archiveIcon}}"></i>{{os.archiveFile}}
+            </a>
           </li>
         </ul>
       </div>
