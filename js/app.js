@@ -103,32 +103,6 @@ $(document).ready(function() {
     store.set("style", "blue");
   });
 
-  // Highlight the top nav as scrolling occurs
-  $("body").scrollspy({
-    target: ".navbar-fixed-top"
-  });
-
-  // jQuery to collapse the navbar on scroll
-  $(window).scroll(function() {
-    if ($(".navbar").offset().top > 35) {
-      $(".navbar-fixed-top").addClass("top-nav-collapse");
-    }
-    else {
-      $(".navbar-fixed-top").removeClass("top-nav-collapse");
-    }
-  });
-
-  // jQuery for page scrolling feature - requires jQuery Easing plugin
-  $(function() {
-    $(".page-scroll a").bind("click", function(event) {
-      var $anchor = $(this);
-      $("html, body").stop().animate({
-        scrollTop: $($anchor.attr("href")).offset().top
-      }, 1500, "easeInOutExpo");
-      event.preventDefault();
-    });
-  });
-
   $(".carousel").carousel({
     interval: 6000
   });

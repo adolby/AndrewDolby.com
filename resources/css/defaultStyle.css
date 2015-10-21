@@ -1,10 +1,10 @@
 body {
-  background-color: #1c587f;
+  background-color: #34495e;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48em) {
   body {
-    background-image: url("../images/seaMarker.jpg");
+    background-image: url("../images/greenPath.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -12,31 +12,31 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+/*@media (max-width: 47.999em) {
   .navbar-default {
-    background-color: rgba(28, 88, 127, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
   }
 
   .navbar-default .navbar-nav > li > a {
     font-size: 16px;
     font-weight: bold;
-    color: #fff; /* IE8 proofing */
+    color: #fff;
     color: rgba(255, 255, 255, 0.75);
   }
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: rgba(255, 255, 255, 0.75);
-    background-color: rgba(41, 128, 185, 0.5);
+    background-color: rgba(70, 99, 127, 0.5);
     border-color: transparent;
   }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: rgba(41, 128, 185, 1.0);
+    background-color: rgba(70, 99, 127, 1.0);
     border-color: transparent;
   }
-  /* Dropdown nav elements */
+
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #fff;
-    background-color: rgba(41, 128, 185, 1.0);
+    background-color: rgba(70, 99, 127, 1.0);
     border-color: transparent;
   }
-}
+}*/
