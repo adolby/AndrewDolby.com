@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Cache-control" content="public">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Andrew Dolby">
@@ -10,14 +9,10 @@
   <title>Andrew Dolby</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-  <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" class="defaultStyle" href="css/defaultStyle.css">
-  <link rel="stylesheetGreen" class="greenStyle" href="css/greenStyle.css">
-  <link rel="stylesheetRed" class="redStyle" href="css/redStyle.css">
-  <link rel="stylesheetBlue" class="blueStyle" href="css/blueStyle.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body id="page-top">
+<body id="page-top" class="background-image default">
   <header>
     <nav>
       <ul>
@@ -60,89 +55,56 @@
     <section id="about" class="about box">
       <h1>About Me</h1>
 
-      <p class="sub-heading justified">
+      <p class="justified sub-heading">
         My name is Andrew Dolby, and I'm a software engineer and web developer.
         I'm currently learning more about Qt and Clojure.
       </p>
 
-      <a class="button-outline" href="downloads/adolbyresume.pdf">
+      <a class="align vertical button-outline" href="downloads/adolbyresume.pdf">
         <img src="images/pdf.svg"><span>Resume</span>
       </a>
     </section>
 
     <section id="projects" class="projects box">
-      <h1 class="inline-header">Kryvos</h1>
-      <img class="lock-icon" src="images/lockIcon.svg" alt="Lock">
+      <h1>Projects</h1>
 
-      <p class="sub-heading centered">
-         Kryvos is an open-source file encryptor that encrypts
-         and decrypts files with AES and Serpent.
-       </p>
+      <span class="project-header">
+        <h2 class="inline-heading">Kryvos</h2>
+        <img class="project-icon" src="images/lockIcon.svg" alt="Lock">
+      </span>
 
-      <img class="image-responsive" src="images/KryvosWindows.png" alt="Kryvos running on Windows">
+      <p class="justified sub-heading">
+        Kryvos is an open-source file encryptor. It encrypts and decrypts files
+        with AES and Serpent.
+      </p>
 
-      <h2 class="download-header">Download</h2>
+      <img class="responsive-image" src="images/KryvosWindows.png" alt="Kryvos running on Windows">
 
+      <h3 class="download-header">Download</h3>
       <div class="kryvos-downloads">
-        <div class="kryvos-download">
-          <h3 class="inline-header">Windows</h3><img class="os-icon" src="images/windows.svg">
-
-          <ul class="link-list increase-margins">
-            <li class="kryvos-download-item link-item">
-              <a class="button-outline" href="downloads/kryvos_0.9.8_windows_x64.exe" download>
-                <img src="images/monitor.svg"><span>Installer / 64-bit</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <a class="align vertical button-outline" href="https://github.com/adolby/Kryvos/releases/latest">
+          <img src="images/github.svg" alt="GitHub"><span>Download on GitHub</span>
+        </a>
       </div>
 
-      <h3>Source</h3>
-      <ul class="increase-margins">
-        <li class="list-unstyled">
-          <a class="button-outline" href="https://github.com/adolby/Kryvos">
-            <img src="images/github.svg" alt="GitHub"><span>Github</span>
+      <h3 class="download-header">Source</h3>
+      <ul class="align horizontal">
+        <li class="unstyled-list-item">
+          <a class="align vertical button-outline" href="https://github.com/adolby/Kryvos">
+            <img src="images/github.svg" alt="GitHub"><span>GitHub</span>
           </a>
         </li>
 
-        <li class="list-unstyled">
+        <li class="unstyled-list-item">
           <a href="http://jenkins.andrewdolby.com/job/Kryvos/">
-            <img class="kryvos-build-badge" src="http://jenkins.andrewdolby.com/buildStatus/icon?job=Kryvos">
+            <img class="build-badge" src="http://jenkins.andrewdolby.com/buildStatus/icon?job=Kryvos">
           </a>
         </li>
       </ul>
     </section> <!-- Projects section -->
   </main>
 
-  <footer>
-    <section class="footer-item">
-      <ul class="link-list">
-        <li class="link-item">
-          <a href="" class="defaultStyleBtn">
-            <img src="images/grid.svg" alt="Default Theme">
-          </a>
-        </li>
-
-        <li class="link-item">
-          <a href="" class="greenStyleBtn">
-            <img src="images/leaf.svg" alt="Green Theme">
-          </a>
-        </li>
-
-        <li class="link-item">
-          <a href="" class="redStyleBtn">
-            <img src="images/flame.svg" alt="Red Theme">
-          </a>
-        </li>
-
-        <li class="link-item">
-          <a href="" class="blueStyleBtn">
-            <img src="images/waterdrop.svg" alt="Red Theme">
-          </a>
-        </li>
-      </ul>
-    </section>
-  </footer>
+  <footer></footer>
 
   <script type="text/javascript" src="app.js"></script>
 </body>

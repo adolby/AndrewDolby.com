@@ -6,14 +6,41 @@ body {
 }
 
 main {
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
 
 section {
   margin: auto;
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1.25rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  margin: auto;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontal {
+  flex-flow: column;
+}
+
+.vertical {
+  flex-flow: row wrap;
 }
 
 .box {
@@ -22,21 +49,17 @@ section {
 }
 
 .social {
-  margin-bottom: 2rem;
+  margin: 1rem auto;
   padding: 1rem;
 }
 
 .about {
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  margin-bottom: 5rem;
-  padding-bottom: 3.3rem;
+  margin: 2.5rem 2.5%;
+  padding-bottom: 2rem;
 }
 
 .projects {
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-bottom: 0;
+  margin: 2.5rem 2.5%;
 }
 
 h1 {
@@ -51,8 +74,17 @@ h2 {
   margin: 0.5rem 0;
 }
 
+.project-header {
+  font-size: 2.25rem;
+  margin-top: 2rem;
+}
+
+.inline-heading {
+  display: inline;
+}
+
 .download-header {
-  margin: 3rem 0;
+  margin: 1rem 0;
 }
 
 h3 {
@@ -61,11 +93,8 @@ h3 {
   margin: 0.5rem 0;
 }
 
-.inline-header {
-  display: inline;
-}
-
 ul {
+  margin: 0;
   padding: 0;
 }
 
@@ -80,7 +109,7 @@ a:active {
 
 .sub-heading {
   margin-top: 1rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.4;
@@ -90,17 +119,8 @@ a:active {
   text-align: justify;
 }
 
-.centered {
-  text-align: center;
-}
-
 .space {
   margin-left: 0.45rem;
-}
-
-.increase-margins {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
 }
 
 /* Navigation */
@@ -180,22 +200,23 @@ nav ul li:last-of-type a {
   width: 2rem;
 }
 
-.image-responsive {
+.responsive-image {
   max-width: 100%;
   height: auto;
 }
 
-.lock-icon {
-  width: 1.7rem;
+.project-icon {
+  height: 1.8rem;
   margin-left: 0.9rem;
 }
 
 .os-icon {
   width: 2rem;
   margin-left: 0.9rem;
+  margin-bottom: 0.3rem;
 }
 
-.kryvos-build-badge {
+.build-badge {
   margin: 0.5rem;
   padding: 0.25rem;
 }
@@ -205,13 +226,35 @@ footer img {
 }
 
 /* Lists */
-.list-unstyled {
+.unstyled-list-item {
   list-style: none;
   margin: 0.3rem;
   padding: 0.25rem;
 }
 
-/* Larger phone */
+/* Download */
+.download {
+  margin: 2rem auto;
+}
+
+/* Alternate theme colors */
+.default {
+  background-color: #34495e;
+}
+
+.blue {
+  background-color: #1c587f;
+}
+
+.green {
+  background-color: #1d7f46;
+}
+
+.red {
+  background-color: #c0392b;
+}
+
+/* Large phone and larger */
 @media all and (min-width: 32rem) {
   .button-outline {
     padding: 0.3rem 0.6rem;
@@ -229,20 +272,19 @@ footer img {
   }
 }
 
-/* Tablet */
+/* Tablet and larger */
 @media all and (min-width: 48rem) {
   section {
-    padding: 3rem;
+    padding: 2rem 3rem;
   }
 
   .about {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
+    margin: 2.5rem;
+    padding-bottom: 3rem;
   }
 
   .projects {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
+    margin: 2.5rem;
   }
 
   nav ul {
@@ -273,19 +315,40 @@ footer img {
     margin: 0.1rem;
     padding: 0.1rem;
   }
+
+  /* Alternate theme background images */
+  .background-image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .default {
+    background-image: url("../images/greenPath.jpg");
+  }
+
+  .blue {
+    background-image: url("../public/images/seaMarker.jpg");
+  }
+
+  .green {
+    background-image: url("../images/forest.jpg");
+  }
+
+  .red {
+    background-image: url("../images/redFlowers.jpg");
+  }
 }
 
 /* Laptop / Desktop */
 @media all and (min-width: 75rem) {
   .about {
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin: 5rem;
   }
 
   .projects {
-    margin-left: 5rem;
-    margin-right: 5rem;
-    padding-bottom: 0;
+    margin: 5rem;
   }
 
   nav ul {
@@ -295,5 +358,10 @@ footer img {
   nav ul .name {
     margin-left: 3rem;
     flex-grow: 1;
+  }
+
+  .build-badge {
+    margin: 0;
+    padding: 0;
   }
 }

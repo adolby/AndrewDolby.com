@@ -13,17 +13,12 @@
                  [boot/core "2.3.0" :scope "test"]
                  [adzerk/boot-cljs "1.7.48-6" :scope "test"]
                  [adzerk/boot-reload "0.4.1" :scope "test"]
-                 [pandeiro/boot-http "0.7.0-SNAPSHOT" :scope "test"]
-                 [deraen/boot-ctn "0.1.0"]])
+                 [pandeiro/boot-http "0.7.0-SNAPSHOT" :scope "test"]])
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
  '[adzerk.boot-reload :refer [reload]]
- '[deraen.boot-ctn :refer [init-ctn!]]
  '[pandeiro.boot-http :refer [serve]])
-
- ; Watch boot temp dirs
-(init-ctn!)
 
 (deftask build []
   (comp (speak)

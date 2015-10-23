@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Andrew Dolby">
+  <meta name="author" content="Andrew Dolby">
+
+  <title>Theme Bar</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <link rel="stylesheet" href="../css/style.min.css">
+</head>
+
+<body>
+  <footer>
+    <ul class="link-list">
+      <li class="link-item">
+        <a onclick="{{default-theme(t)}}" id="defaultStyle" href="">
+          <img src="images/grid.svg" alt="Default Theme">
+        </a>
+      </li>
+
+      <li class="link-item">
+        <a onclick="{{green-theme(t)}}" id="greenStyle" href="">
+          <img src="images/leaf.svg" alt="Green Theme">
+        </a>
+      </li>
+
+      <li class="link-item">
+        <a onclick="{{red-theme(t)}}" id="redStyle" href="">
+          <img src="images/flame.svg" alt="Red Theme">
+        </a>
+      </li>
+
+      <li class="link-item">
+        <a onclick="{{blue-theme(t)}}" id="blueStyle" href="">
+          <img src="images/waterdrop.svg" alt="Blue Theme">
+        </a>
+      </li>
+    </ul>
+  </footer>
+</body>
+</html>

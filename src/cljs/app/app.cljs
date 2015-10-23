@@ -2,12 +2,14 @@
   (:require [cljs.core.async :as async :refer [<!]]
             [reagent.core :as reagent]
             [kioo.reagent :as kioo]
-            [cljs-http.client :as http])
+            [cljs-http.client :as http]
+            [alandipert.storage-atom :refer [local-storage]])
   (:require-macros [kioo.reagent :refer [defsnippet deftemplate]]
                    [cljs.core.async.macros :refer [go]]))
 
-; Global state
-(defonce data (reagent/atom {}))
+(def style (local-storage (atom {}) :style))
+
+(def data (reagent/atom {}))
 
 ; URL analysis
 (defn get-os [url]
@@ -31,15 +33,19 @@
     (boolean (re-find #".dmg" url)) "Disk Image"
     :else "Installer"))
 
-(defn analyze-url [url]
-  (hash-map :os (get-os url), :word-size (get-word-size url),
-    :file-type (get-file-type url), :url url))
+(defn analyze-download-url [asset-info]
+  (let [{url :browser_download_url} asset-info]
+    (hash-map :os (get-os url), :word-size (get-word-size url),
+      :file-type (get-file-type url), :url url)))
+
+(defn build-download-list [asset-info-list]
+  (group-by :os (map analyze-download-url asset-info-list)))
 
 ; Download JSON data
-(defn get-json [url]
+(defn load-download-json [json-url]
   (go
-    (let [{downloads :body} (<! (http/get url))]
-      (reset! data (group-by :os (map analyze-url downloads))))))
+    (let [{{asset-info-list :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
+      (reset! data (build-download-list asset-info-list)))))
 
 ; Templating
 (def icon-files
@@ -51,9 +57,9 @@
    "Portable" "images/archive.svg",
    "Disk Image" "images/disc.svg"})
 
-(defsnippet kryvos-download-item "index.html" [:.kryvos-download-item]
+(defsnippet kryvos-download-item "templates/download.html" [:.download-item]
   [{url :url word-size :word-size file-type :file-type}]
-  {[:a] (kioo/do-> (kioo/set-class "button-outline")
+  {[:a] (kioo/do-> (kioo/set-class "align vertical button-outline")
                    (kioo/set-attr :href url)
                    (kioo/set-attr :download "")
                    (kioo/content [:img {:src (get icon-files file-type)}]
@@ -62,24 +68,26 @@
                                      file-type
                                      (str file-type " / " word-size))]))})
 
-(defsnippet kryvos-download "index.html" [:.kryvos-download] [category files]
-  {[:h3]  (kioo/do->
-            (kioo/set-class "inline-header")
-            (kioo/content category))
-
-   [:img] (kioo/do->
-           (kioo/set-class "os-icon")
-           (kioo/set-attr :src (get icon-files category)))
+(defsnippet kryvos-download "templates/download.html" [:.download] [category files]
+  {[:span] (kioo/content [:h3 {:class "inline-heading"} category]
+                         [:img {:class "os-icon", :src (get icon-files category)}])
 
    [:ul] (kioo/do->
-           (kioo/set-class "link-list increase-margins")
+           (kioo/set-class "align horizontal link-list")   
            (kioo/content (map kryvos-download-item files)))})
 
+(deftemplate kryvos-downloads "templates/download.html" []
+  {[:.downloads] (kioo/content (for [[k v] @data] ;^{:key (name (gensym k))}
+                                 (kryvos-download k v)))})
+
+(defsnippet theme-bar "templates/theme-bar.html" [:footer] []
+  {[:a] (kioo/set-attr :onclick #())})
+
 (deftemplate page "index.html" []
-  {[:.kryvos-downloads] (kioo/content (for [[k v] @data] ;^{:key (name (gensym k))}
-                                        (kryvos-download k v)))})
+  {[:.kryvos-downloads] (kioo/content (kryvos-downloads))
+   [:footer] (kioo/content (theme-bar))})
 
 (defn init []
-  (let [json-url "downloads.json"]
-    (get-json json-url)
+  (let [json-url "http://api.github.com/repos/adolby/Kryvos/releases/latest"]
+    (load-download-json json-url)
     (reagent/render-component [page] (.-body js/document))))
