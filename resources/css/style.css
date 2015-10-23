@@ -55,7 +55,7 @@ footer {
 
 .about {
   margin: 2.5rem 2.5%;
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 .projects {
@@ -280,7 +280,6 @@ footer img {
 
   .about {
     margin: 2.5rem;
-    padding-bottom: 3rem;
   }
 
   .projects {
