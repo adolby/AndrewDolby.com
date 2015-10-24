@@ -49,13 +49,13 @@
 
 ; Templating
 (def icon-files
-  {"Windows" "images/windows.svg",
-   "Linux" "images/linux.svg",
-   "Mac OS X" "images/apple.svg",
+  {"Windows" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/windows.svg",
+   "Linux" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/linux.svg",
+   "Mac OS X" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/apple.svg",
    "Other" "",
-   "Installer" "images/monitor.svg",
-   "Portable" "images/archive.svg",
-   "Disk Image" "images/disc.svg"})
+   "Installer" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/monitor.svg",
+   "Portable" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/archive.svg",
+   "Disk Image" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/disc.svg"})
 
 (defsnippet kryvos-download-item "templates/download.html" [:.download-item]
   [{url :url word-size :word-size file-type :file-type}]
@@ -73,7 +73,7 @@
                          [:img {:class "os-icon", :src (get icon-files category)}])
 
    [:ul] (kioo/do->
-           (kioo/set-class "align horizontal link-list")   
+           (kioo/set-class "align horizontal link-list")
            (kioo/content (map kryvos-download-item files)))})
 
 (deftemplate kryvos-downloads "templates/download.html" []
