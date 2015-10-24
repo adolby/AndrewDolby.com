@@ -84,7 +84,8 @@ h2 {
 }
 
 .download-header {
-  margin: 1rem 0;
+  margin: 0;
+  margin-top: 3rem;
 }
 
 h3 {
@@ -324,24 +325,28 @@ footer img {
   }
 
   .default {
-    background-image: url("../images/greenPath.jpg");
+    background-image: url("https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/greenPath.jpg");
   }
 
   .blue {
-    background-image: url("../public/images/seaMarker.jpg");
+    background-image: url("https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/seaMarker.jpg");
   }
 
   .green {
-    background-image: url("../images/forest.jpg");
+    background-image: url("https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/forest.jpg");
   }
 
   .red {
-    background-image: url("../images/redFlowers.jpg");
+    background-image: url("https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/redFlowers.jpg");
   }
 }
 
 /* Laptop / Desktop */
 @media all and (min-width: 75rem) {
+  section {
+    padding: 2rem 3.5rem;
+  }
+
   .about {
     margin: 5rem;
   }
