@@ -80,7 +80,7 @@
   {[:.downloads] (kioo/content (for [[k v] @data] ;^{:key (name (gensym k))}
                                  (kryvos-download k v)))})
 
-(defsnippet theme-bar "templates/theme-bar.html" [:footer] []
+(defsnippet theme-bar "templates/theme-bar.html" [:.link-list] []
   {[:a] (kioo/set-attr :onclick #())})
 
 (deftemplate page "index.html" []
