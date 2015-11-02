@@ -42,7 +42,7 @@
   (group-by :os (map analyze-download-url asset-info-list)))
 
 ; Download JSON data
-(defn load-download-json [json-url]
+(defn download-json [json-url]
   (go
     (let [{{asset-info-list :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
       (reset! data (build-download-list asset-info-list)))))
@@ -89,5 +89,5 @@
 
 (defn init []
   (let [json-url "http://api.github.com/repos/adolby/Kryvos/releases/latest"]
-    (load-download-json json-url)
+    (download-json json-url)
     (reagent/render-component [page] (.-body js/document))))
