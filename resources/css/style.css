@@ -12,12 +12,21 @@ main {
 }
 
 section {
-  margin: auto;
-  padding: 1.25rem;
+  margin: 2.5rem 2.5%;
+  padding: 1.75rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+}
+
+.social {
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.about {
+  padding-bottom: 2.5rem;
 }
 
 footer {
@@ -48,20 +57,6 @@ footer {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.social {
-  margin: 1rem auto;
-  padding: 1rem;
-}
-
-.about {
-  margin: 2.5rem 2.5%;
-  padding-bottom: 2.5rem;
-}
-
-.projects {
-  margin: 2.5rem 2.5%;
-}
-
 h1 {
   font-size: 2.5rem;
   font-weight: 500;
@@ -74,24 +69,29 @@ h2 {
   margin: 0.5rem 0;
 }
 
-.project-header {
-  font-size: 2.25rem;
-  margin-top: 2rem;
+h3 {
+  font-size: 1.875rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
 }
 
 .inline-heading {
   display: inline;
 }
 
-.download-header {
+.project-heading {
+  font-size: 2.25rem;
+  margin-top: 2rem;
+}
+
+.download-heading {
   margin: 0;
   margin-top: 3rem;
 }
 
-h3 {
-  font-size: 1.875rem;
-  font-weight: 500;
-  margin: 0.5rem 0;
+.source-heading {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 ul {
@@ -108,7 +108,7 @@ a:active {
   text-decoration: none;
 }
 
-.sub-heading {
+.description {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 1.5rem;
@@ -165,14 +165,11 @@ nav ul li:last-of-type a {
 }
 
 .link-item {
+  list-style: none;
   height: auto;
   text-align: center;
   text-decoration: none;
   padding: 0.9rem 1.14rem;
-}
-
-.link-item {
-  list-style: none;
 }
 
 /* Buttons */
@@ -193,12 +190,12 @@ nav ul li:last-of-type a {
 
 .button-outline img {
   width: 1.2rem;
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 }
 
 /* Images */
 .social img {
-  width: 2rem;
+  width: 3rem;
 }
 
 .responsive-image {
@@ -276,15 +273,8 @@ footer img {
 /* Tablet and larger */
 @media all and (min-width: 48rem) {
   section {
-    padding: 2rem 3rem;
-  }
-
-  .about {
     margin: 2.5rem;
-  }
-
-  .projects {
-    margin: 2.5rem;
+    padding: 2rem 4rem;
   }
 
   nav ul {
@@ -307,9 +297,9 @@ footer img {
     font-size: 1.8rem;
   }
 
-  .social img {
+  /*.social img {
     width: 3rem;
-  }
+  }*/
 
   .list-unstyled {
     margin: 0.1rem;
@@ -344,15 +334,8 @@ footer img {
 /* Laptop / Desktop */
 @media all and (min-width: 75rem) {
   section {
-    padding: 2rem 3.5rem;
-  }
-
-  .about {
     margin: 5rem;
-  }
-
-  .projects {
-    margin: 5rem;
+    padding: 2rem 4.5rem;
   }
 
   nav ul {
