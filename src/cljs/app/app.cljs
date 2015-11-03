@@ -87,7 +87,9 @@
           (kioo/listen :on-click #(swap! prefs assoc :theme theme)))})
 
 (deftemplate page "index.html" []
-  {[:#background] (kioo/set-class (str "background-image " (:theme @prefs)))
+  {[:#background] (kioo/set-class (if (clojure.string/blank? (:theme @prefs))
+                                    "background-image default"
+                                    (str "background-image " (:theme @prefs))))
    [:.kryvos-downloads] (kioo/content (kryvos-downloads))
    [:footer :ul] (kioo/content (map theme-bar themes))})
 
