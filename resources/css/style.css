@@ -315,19 +315,19 @@ footer img {
   }
 
   .default {
-    background-image: url("images/greenPath.jpg");
+    background-image: url("../images/greenPath.jpg");
   }
 
   .blue {
-    background-image: url("images/seaMarker.jpg");
+    background-image: url("../images/seaMarker.jpg");
   }
 
   .green {
-    background-image: url("images/forest.jpg");
+    background-image: url("../images/forest.jpg");
   }
 
   .red {
-    background-image: url("images/redFlowers.jpg");
+    background-image: url("../images/redFlowers.jpg");
   }
 }
 
