@@ -7,13 +7,14 @@ install:
 - ./boot -V
 script:
 - ./boot produce
+after_success:
 - cd target
 - git init
 - git config user.name "Travis CI"
 - git config user.email "andrewdolby@gmail.com"
 - git add .
 - git commit -m "Deploy to GitHub Pages"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" > /dev/null 2>&1
 env:
   global:
   - GH_REF: github.com/adolby/adolby.github.io.git
