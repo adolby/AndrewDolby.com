@@ -7,9 +7,8 @@
   (:require-macros [kioo.reagent :refer [defsnippet deftemplate]]
                    [cljs.core.async.macros :refer [go]]))
 
-;(def style (local-storage (atom {}) :style))
-
-(def data (reagent/atom {}))
+(def prefs (local-storage (reagent/atom {}) :prefs))
+(def downloads (reagent/atom {}))
 
 ; URL analysis
 (defn get-os [url]
@@ -41,11 +40,11 @@
 (defn build-download-list [asset-info-list]
   (group-by :os (map analyze-download-url asset-info-list)))
 
-; Download JSON data
+; Get JSON download data
 (defn download-json [json-url]
   (go
     (let [{{asset-info-list :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
-      (reset! data (build-download-list asset-info-list)))))
+      (reset! downloads (build-download-list asset-info-list)))))
 
 ; Templating
 (def icon-files
@@ -56,6 +55,8 @@
    "Installer" "images/monitor.svg",
    "Portable" "images/archive.svg",
    "Disk Image" "images/disc.svg"})
+
+(def themes ["default", "green", "red", "blue"])
 
 (defsnippet kryvos-download-item "templates/download.html" [:.download-item]
   [{url :url word-size :word-size file-type :file-type}]
@@ -77,15 +78,18 @@
            (kioo/content (map kryvos-download-item files)))})
 
 (deftemplate kryvos-downloads "templates/download.html" []
-  {[:.downloads] (kioo/content (for [[k v] @data] ;^{:key (name (gensym k))}
+  {[:.downloads] (kioo/content (for [[k v] @downloads] ;^{:key (name (gensym k))}
                                  (kryvos-download k v)))})
 
-(defsnippet theme-bar "templates/theme-bar.html" [:.link-list] []
-  {[:a] (kioo/set-attr :onclick #())})
+(defsnippet theme-bar "templates/theme-bar.html" [:.link-item] [theme]
+  {[:a] (kioo/do->
+          (kioo/content [:img {:src (str "images/" theme ".svg"), :alt (str theme " Theme")}])
+          (kioo/listen :on-click #(swap! prefs assoc :theme theme)))})
 
 (deftemplate page "index.html" []
-  {[:.kryvos-downloads] (kioo/content (kryvos-downloads))
-   [:footer] (kioo/content (theme-bar))})
+  {[:#background] (kioo/set-class (str "background-image " (:theme @prefs)))
+   [:.kryvos-downloads] (kioo/content (kryvos-downloads))
+   [:footer :ul] (kioo/content (map theme-bar themes))})
 
 (defn init []
   (let [json-url "https://api.github.com/repos/adolby/Kryvos/releases/latest"]

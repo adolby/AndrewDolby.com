@@ -31,7 +31,8 @@ section {
 
 footer {
   margin: auto;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 5rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -58,19 +59,19 @@ footer {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 500;
   margin: 0.5rem 0;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 500;
   margin: 0.5rem 0;
 }
 
 h3 {
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: 500;
   margin: 0.5rem 0;
 }
@@ -80,7 +81,6 @@ h3 {
 }
 
 .project-heading {
-  font-size: 2.25rem;
   margin-top: 2rem;
 }
 
@@ -111,7 +111,7 @@ a:active {
 .description {
   margin-top: 1rem;
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.4;
 }
@@ -205,7 +205,7 @@ nav ul li:last-of-type a {
 }
 
 .project-icon {
-  height: 1.8rem;
+  height: 2rem;
   margin-left: 0.9rem;
 }
 
@@ -221,7 +221,7 @@ nav ul li:last-of-type a {
 }
 
 footer img {
-  width: 1.5rem;
+  width: 2rem;
 }
 
 /* Lists */
@@ -241,16 +241,16 @@ footer img {
   background-color: #34495e;
 }
 
-.blue {
-  background-color: #1c587f;
-}
-
 .green {
   background-color: #1d7f46;
 }
 
 .red {
   background-color: #c0392b;
+}
+
+.blue {
+  background-color: #1c587f;
 }
 
 /* Large phone and larger */
@@ -314,10 +314,6 @@ footer img {
     background-image: url("../images/greenPath.jpg");
   }
 
-  .blue {
-    background-image: url("../images/seaMarker.jpg");
-  }
-
   .green {
     background-image: url("../images/forest.jpg");
   }
@@ -325,13 +321,18 @@ footer img {
   .red {
     background-image: url("../images/redFlowers.jpg");
   }
+
+  .blue {
+    background-image: url("../images/seaMarker.jpg");
+  }
 }
 
 /* Laptop / Desktop */
 @media all and (min-width: 75rem) {
-  section {
+  section, section.about {
     margin: 5rem;
     padding: 2rem 4.5rem;
+    padding-bottom: 3rem;
   }
 
   nav ul {
