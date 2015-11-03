@@ -9,8 +9,7 @@
                  [bidi "1.21.1"]
                  [kioo "0.4.1"]
                  [alandipert/storage-atom "1.2.4"]
-
-                 [boot/core "2.3.0" :scope "test"]
+                 [boot/core "2.4.0" :scope "test"]
                  [adzerk/boot-cljs "1.7.48-6" :scope "test"]
                  [adzerk/boot-reload "0.4.1" :scope "test"]
                  [pandeiro/boot-http "0.7.0-SNAPSHOT" :scope "test"]])
@@ -21,13 +20,13 @@
  '[pandeiro.boot-http :refer [serve]])
 
 (deftask build []
-  (comp (speak)
-        (cljs)))
+  (cljs))
 
 (deftask run []
   (comp (serve)
         (watch)
         (reload)
+        (speak)
         (build)))
 
 (deftask production []
