@@ -297,10 +297,6 @@ footer img {
     font-size: 1.8rem;
   }
 
-  /*.social img {
-    width: 3rem;
-  }*/
-
   .list-unstyled {
     margin: 0.1rem;
     padding: 0.1rem;
@@ -340,6 +336,10 @@ footer img {
 
   nav ul {
     justify-content: flex-end;
+  }
+
+  nav ul li {
+    margin-right: 3rem;
   }
 
   nav ul .name {
