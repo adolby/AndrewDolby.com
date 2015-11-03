@@ -1,0 +1,20 @@
+language: clojure
+jdk:
+- oraclejdk8
+install:
+- wget -O boot https://github.com/boot-clj/boot/releases/download/2.4.0/boot.sh
+- chmod 755 boot
+- ./boot -V
+script:
+- ./boot produce
+- cd target
+- git init
+- git config user.name "Travis CI"
+- git config user.email "andrewdolby@gmail.com"
+- git add .
+- git commit -m "Deploy to GitHub Pages"
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+env:
+  global:
+  - GH_REF: github.com/adolby/adolby.github.io.git
+  - secure: fb5H/gY3gBWSEUbsQQ0oivWZ4O+dSMtN/zXbRqznc3ySvUsTV/W7F96GqnNqgM8j56H+AEhcM59A6JfGGNlo1xKaPzG7TvKAt9gruLgEUfhZDxnu628NCBxJ9vj0T2Xsn/7PNOPlPyJVwnXnQKzmCMc3LM9zpiJjzVLkUqfRWHE=
