@@ -7,7 +7,7 @@
   (:require-macros [kioo.reagent :refer [defsnippet deftemplate]]
                    [cljs.core.async.macros :refer [go]]))
 
-(def style (local-storage (atom {}) :style))
+;(def style (local-storage (atom {}) :style))
 
 (def data (reagent/atom {}))
 
@@ -49,13 +49,13 @@
 
 ; Templating
 (def icon-files
-  {"Windows" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/windows.svg",
-   "Linux" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/linux.svg",
-   "Mac OS X" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/apple.svg",
+  {"Windows" "images/windows.svg",
+   "Linux" "images/linux.svg",
+   "Mac OS X" "images/apple.svg",
    "Other" "",
-   "Installer" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/monitor.svg",
-   "Portable" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/archive.svg",
-   "Disk Image" "https://gitcdn.xyz/repo/adolby/AndrewDolby.com/master/resources/images/disc.svg"})
+   "Installer" "images/monitor.svg",
+   "Portable" "images/archive.svg",
+   "Disk Image" "images/disc.svg"})
 
 (defsnippet kryvos-download-item "templates/download.html" [:.download-item]
   [{url :url word-size :word-size file-type :file-type}]
@@ -88,6 +88,6 @@
    [:footer] (kioo/content (theme-bar))})
 
 (defn init []
-  (let [json-url "http://api.github.com/repos/adolby/Kryvos/releases/latest"]
+  (let [json-url "https://api.github.com/repos/adolby/Kryvos/releases/latest"]
     (download-json json-url)
     (reagent/render-component [page] (.-body js/document))))
