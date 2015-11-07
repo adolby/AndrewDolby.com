@@ -1,4 +1,4 @@
-# AndrewDolby.com
+# AndrewDolby.com [![Build Status](https://travis-ci.org/adolby/AndrewDolby.com.svg?branch=master)](https://travis-ci.org/adolby/AndrewDolby.com)
 
 My profile website.
 
