@@ -35,16 +35,16 @@
 (defn analyze-download-url [asset-info]
   (let [{url :browser_download_url} asset-info]
     (hash-map :os (get-os url), :word-size (get-word-size url),
-      :file-type (get-file-type url), :url url)))
+              :file-type (get-file-type url), :url url)))
 
-(defn build-download-list [asset-info-list]
-  (group-by :os (map analyze-download-url asset-info-list)))
+(defn build-download-map [asset-info-vector]
+  (group-by :os (map analyze-download-url asset-info-vector)))
 
 ; Get JSON download data
 (defn download-json [json-url]
   (go
-    (let [{{asset-info-list :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
-      (reset! downloads (build-download-list asset-info-list)))))
+    (let [{{asset-info-vector :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
+      (reset! downloads (build-download-map asset-info-vector)))))
 
 ; Templating
 (def icon-files
@@ -95,5 +95,5 @@
 
 (defn init []
   (let [json-url "https://api.github.com/repos/adolby/Kryvos/releases/latest"]
-    (download-json json-url)
-    (reagent/render-component [page] (.-body js/document))))
+    (download-json json-url))
+  (reagent/render-component [page] (.-body js/document)))
