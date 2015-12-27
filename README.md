@@ -10,4 +10,4 @@ It performs the following functions with ClojureScript:
 
 3. Swap the site theme around with the footer links
 
-4. The above three features are implemented with the help of Reagent, a ClojureScript React wrapper. Reagent provides great performance while taking care of view updates as you change your application state.
+4. The above features are implemented with the help of Reagent, a ClojureScript React wrapper. Reagent provides great performance while taking care of view updates as you change your application state.
