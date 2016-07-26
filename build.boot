@@ -11,6 +11,7 @@
    [kioo "0.4.2"]
    [com.taoensso/timbre "4.7.0"]
    [alandipert/storage-atom "1.2.4"]
+   [com.taoensso/timbre "4.7.0"]
 
    [adzerk/boot-cljs "1.7.228-1" :scope "test"]
    [adzerk/boot-reload "0.4.12" :scope "test"]
@@ -20,6 +21,7 @@
 (require
  '[adzerk.boot-cljs :refer [cljs]]
  '[adzerk.boot-reload :refer [reload]]
+ '[adzerk.boot-test :refer [test]]
  '[pandeiro.boot-http :refer [serve]])
 
 (deftask dev []
