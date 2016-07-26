@@ -1,4 +1,4 @@
-(ns app.app
+(ns app.core
   (:require [cljs.core.async :as async :refer [<!]]
             [reagent.core :as reagent]
             [kioo.reagent :as kioo]
@@ -10,7 +10,7 @@
 (def prefs (local-storage (reagent/atom {}) :prefs))
 (def downloads (reagent/atom {}))
 
-; URL analysis
+;; URL analysis
 (defn get-os [url]
   (cond
     (boolean (re-find #"windows" url)) "Windows"
@@ -34,20 +34,20 @@
 
 (defn analyze-download-url [asset-info]
   (let [{url :browser_download_url} asset-info]
-    (hash-map :os (get-os url), :word-size (get-word-size url),
-              :file-type (get-file-type url), :url url)))
+    {:os (get-os url) :word-size (get-word-size url)
+     :file-type (get-file-type url) :url url}))
 
 (defn build-download-map [asset-info-vector]
   (group-by :os (map analyze-download-url asset-info-vector)))
 
-; Get JSON download data
+;; Get JSON download data
 (defn download-json [json-url]
   (go
     (let [{{asset-info-vector :assets} :body}
           (<! (http/get json-url {:with-credentials? false}))]
       (reset! downloads (build-download-map asset-info-vector)))))
 
-; Templating
+;; Templating
 (def icon-files
   {"Windows" "images/windows.svg",
    "Linux" "images/linux.svg",

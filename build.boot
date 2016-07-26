@@ -28,7 +28,7 @@
   (comp (serve)
         (watch)
         (speak)
-        (reload :on-jsload 'app.app/init)
+        (reload :on-jsload 'app.core/init)
         (cljs :optimizations :none :source-map true)
         (target)))
 
