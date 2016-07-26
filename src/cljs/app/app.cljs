@@ -43,7 +43,8 @@
 ; Get JSON download data
 (defn download-json [json-url]
   (go
-    (let [{{asset-info-vector :assets} :body} (<! (http/get json-url {:with-credentials? false}))]
+    (let [{{asset-info-vector :assets} :body}
+          (<! (http/get json-url {:with-credentials? false}))]
       (reset! downloads (build-download-map asset-info-vector)))))
 
 ; Templating
@@ -69,21 +70,24 @@
                                      file-type
                                      (str file-type " / " word-size))]))})
 
-(defsnippet kryvos-download "templates/download.html" [:.download] [category files]
+(defsnippet kryvos-download "templates/download.html" [:.download]
+  [category files]
   {[:span] (kioo/content [:h3 {:class "inline-heading"} category]
-                         [:img {:class "os-icon", :src (get icon-files category)}])
-
+                         [:img {:class "os-icon",
+                                :src (get icon-files category)}])
    [:ul] (kioo/do->
            (kioo/set-class "align horizontal link-list")
            (kioo/content (map kryvos-download-item files)))})
 
 (deftemplate kryvos-downloads "templates/download.html" []
-  {[:.downloads] (kioo/content (for [[k v] @downloads] ;^{:key (name (gensym k))}
+  {[:.downloads] (kioo/content (for [[k v] @downloads]
+                                 ^{:key k}
                                  (kryvos-download k v)))})
 
 (defsnippet theme-bar "templates/theme-bar.html" [:.link-item] [theme]
   {[:a] (kioo/do->
-          (kioo/content [:img {:src (str "images/" theme ".svg"), :alt (str theme " Theme")}])
+          (kioo/content [:img {:src (str "images/" theme ".svg"),
+                               :alt (str theme " Theme")}])
           (kioo/listen :on-click #(swap! prefs assoc :theme theme)))})
 
 (deftemplate page "index.html" []
