@@ -6,7 +6,7 @@ install:
 - chmod 755 boot
 - ./boot -V
 script:
-- ./boot produce
+- ./boot prod
 after_success:
 - cd target
 - git init
