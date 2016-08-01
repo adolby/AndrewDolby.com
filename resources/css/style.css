@@ -325,7 +325,7 @@ footer img {
 /* Laptop / Desktop */
 @media all and (min-width: 75rem) {
   section, section.about {
-    margin: 5rem;
+    margin: 5rem 12rem;
     padding: 2rem 4.5rem;
     padding-bottom: 3rem;
   }
@@ -346,5 +346,14 @@ footer img {
   .build-badge {
     margin: 0;
     padding: 0;
+  }
+}
+
+/* Widescreen */
+@media all and (min-width: 100rem) {
+  section, section.about {
+    margin: 5rem 20rem;
+    padding: 2rem 4.5rem;
+    padding-bottom: 3rem;
   }
 }
