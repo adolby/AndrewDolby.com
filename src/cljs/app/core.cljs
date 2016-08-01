@@ -1,5 +1,6 @@
 (ns app.core
-  (:require [cljs.core.async :as async :refer [<!]]
+  (:require [clojure.string :as str]
+            [cljs.core.async :as async :refer [<!]]
             [reagent.core :as reagent]
             [kioo.reagent :as kioo]
             [cljs-http.client :as http]
@@ -49,55 +50,71 @@
 
 ;; Templating
 (def icon-files
-  {"Windows" "images/windows.svg",
-   "Linux" "images/linux.svg",
-   "Mac OS X" "images/apple.svg",
-   "Other" "",
-   "Installer" "images/monitor.svg",
-   "Portable" "images/archive.svg",
+  {"Windows" "images/windows.svg"
+   "Linux" "images/linux.svg"
+   "Mac OS X" "images/apple.svg"
+   "Other" ""
+   "Installer" "images/monitor.svg"
+   "Portable" "images/archive.svg"
    "Disk Image" "images/disc.svg"})
 
-(def themes ["default", "green", "red", "blue"])
+(def themes ["default" "green" "red" "blue"])
 
-(defsnippet kryvos-download-item "templates/download.html" [:.download-item]
+(defsnippet kryvos-download-item
+  "templates/download.html"
+  [:.download-item]
   [{url :url word-size :word-size file-type :file-type}]
   {[:a] (kioo/do-> (kioo/set-class "align vertical button-outline")
                    (kioo/set-attr :href url)
                    (kioo/set-attr :download "")
-                   (kioo/content [:img {:src (get icon-files file-type)}]
+                   (kioo/content [:img {:src (get icon-files
+                                                  file-type)}]
                                  [:span
-                                   (if (clojure.string/blank? word-size)
+                                   (if (str/blank? word-size)
                                      file-type
-                                     (str file-type " / " word-size))]))})
+                                     (str file-type
+                                          " / "
+                                          word-size))]))})
 
-(defsnippet kryvos-download "templates/download.html" [:.download]
+(defsnippet kryvos-download
+  "templates/download.html"
+  [:.download]
   [category files]
   {[:span] (kioo/content [:h3 {:class "inline-heading"} category]
-                         [:img {:class "os-icon",
+                         [:img {:class "os-icon"
                                 :src (get icon-files category)}])
    [:ul] (kioo/do->
            (kioo/set-class "align horizontal link-list")
            (kioo/content (map kryvos-download-item files)))})
 
-(deftemplate kryvos-downloads "templates/download.html" []
+(deftemplate kryvos-downloads
+  "templates/download.html"
+  []
   {[:.downloads] (kioo/content (for [[k v] @downloads]
                                  ^{:key k}
                                  (kryvos-download k v)))})
 
-(defsnippet theme-bar "templates/theme-bar.html" [:.link-item] [theme]
+(defsnippet theme-bar
+  "templates/theme-bar.html"
+  [:.link-item]
+  [theme]
   {[:a] (kioo/do->
-          (kioo/content [:img {:src (str "images/" theme ".svg"),
+          (kioo/content [:img {:src (str "images/" theme ".svg")
                                :alt (str theme " Theme")}])
           (kioo/listen :on-click #(swap! prefs assoc :theme theme)))})
 
-(deftemplate page "index.html" []
-  {[:#background] (kioo/set-class (if (clojure.string/blank? (:theme @prefs))
-                                    "background-image default"
-                                    (str "background-image " (:theme @prefs))))
+(deftemplate page
+  "index.html"
+  []
+  {[:#background
+     (kioo/set-class (if (str/blank? (:theme @prefs))
+                       "background-image default"
+                       (str "background-image " (:theme @prefs))))]
    [:.kryvos-downloads] (kioo/content (kryvos-downloads))
    [:footer :ul] (kioo/content (map theme-bar themes))})
 
 (defn init []
-  (let [json-url "https://api.github.com/repos/adolby/Kryvos/releases/latest"]
+  (let [json-url
+        "https://api.github.com/repos/adolby/Kryvos/releases/latest"]
     (download-json json-url))
   (reagent/render-component [page] (.-body js/document)))
