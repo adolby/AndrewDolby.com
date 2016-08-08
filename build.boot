@@ -32,4 +32,5 @@
         (target)))
 
 (deftask prod []
-  (cljs :optimizations :advanced))
+  (cljs :optimizations :advanced)
+  (target))

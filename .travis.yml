@@ -8,15 +8,19 @@ install:
 script:
 - ./boot prod
 after_success:
+- rm -rf .git
 - cd target
+- rm -rf app.cljs.edn
 - git init
 - git config user.name "Travis CI"
 - git config user.email "andrewdolby@gmail.com"
+- git config --global push.default simple
+- git remote add upstream "https://${GH_TOKEN}@${GH_REF}"
 - echo "andrewdolby.com" > CNAME
 - touch .
 - git add -A .
-- git commit -m "Deploy to GitHub Pages"
-- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" >/dev/null 2>&1
+- git commit -m "Deploy to GitHub Pages - ${TRAVIS_COMMIT}"
+- git push --force upstream master
 env:
   global:
   - GH_REF: github.com/adolby/adolby.github.io.git
