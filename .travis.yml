@@ -9,6 +9,7 @@ install:
 script:
 - ./boot prod
 after_success:
+- if [ "$TRAVIS_BRANCH" != "master" ] then exit 0 fi
 - rm -rf .git
 - cd target
 - rm -rf app.cljs.edn
