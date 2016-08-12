@@ -111,8 +111,8 @@ a:active {
   line-height: 1.4;
 }
 
-.justified {
-  text-align: justify;
+.aligned {
+  text-align: left;
 }
 
 .space {
@@ -319,6 +319,10 @@ footer img {
 
   .blue {
     background-image: url("../images/seaMarker.jpg");
+  }
+
+  .aligned {
+    text-align: justify;
   }
 }
 
