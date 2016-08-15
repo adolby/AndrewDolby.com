@@ -3,14 +3,11 @@ jdk:
 - oraclejdk8
 install:
 - wget -O boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
-- chmod 755 boot
+- chmod a+x boot
 - ./boot -u
 - ./boot -V
 script:
 - ./boot prod
 after_success:
-- bash ./deploy.sh
-env:
-  global:
-  - GH_REF: github.com/adolby/adolby.github.io.git
-  - secure: fb5H/gY3gBWSEUbsQQ0oivWZ4O+dSMtN/zXbRqznc3ySvUsTV/W7F96GqnNqgM8j56H+AEhcM59A6JfGGNlo1xKaPzG7TvKAt9gruLgEUfhZDxnu628NCBxJ9vj0T2Xsn/7PNOPlPyJVwnXnQKzmCMc3LM9zpiJjzVLkUqfRWHE=
+- chmod a+x deploy.sh
+- ./deploy.sh
