@@ -5,10 +5,10 @@
  '[[org.clojure/clojure "1.8.0"]
    [org.clojure/clojurescript "1.9.36"]
    [cljs-http "0.1.41"]
-   [reagent "0.5.1"]
-   [kioo "0.4.2"]
+   [reagent "0.6.0-rc"]
+   [re-frame "0.8.0-alpha11"]
+   [kioo "0.4.2" :exclusions [cljsjs/react]]
    [com.taoensso/timbre "4.7.0"]
-   [alandipert/storage-atom "1.2.4"]
 
    [adzerk/boot-cljs "1.7.228-1" :scope "test"]
    [adzerk/boot-reload "0.4.12" :scope "test"]
@@ -25,7 +25,7 @@
   (comp (serve)
         (watch)
         (speak)
-        (reload :on-jsload 'app.core/init)
+        (reload)
         (cljs :optimizations :none :source-map true)
         (target)))
 

@@ -236,6 +236,10 @@ footer img {
 }
 
 /* Alternate theme colors */
+.void {
+  background-color: #000;
+}
+
 .default {
   background-color: #34495e;
 }
