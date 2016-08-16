@@ -103,6 +103,10 @@ a:active {
   cursor: pointer;
 }
 
+a.text-link {
+  color: ##2ecc71;
+}
+
 .description {
   margin-top: 1rem;
   margin-bottom: 2rem;
