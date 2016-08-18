@@ -103,16 +103,16 @@ a:active {
   cursor: pointer;
 }
 
-a.text-link {
-  color: ##2ecc71;
-}
-
 .description {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 1.4;
+}
+
+.description a.text-link {
+  color: #00ff00;
 }
 
 .aligned {
