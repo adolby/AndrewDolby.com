@@ -112,7 +112,7 @@ a:active {
 }
 
 .description a {
-  color: #00ff00;
+  text-decoration: underline;
 }
 
 .aligned {
