@@ -4,7 +4,7 @@ My profile website. https://www.andrewdolby.com
 
 ## Features
 
-1. Downloads and analyzes GitHub Release info to display download links for my projects that exist as executables. This is accomplished with core.async channels, which are the Clojure(Script) version of Go channels. Channels are also known as co-routines or communicating sequential processes in other languages.
+1. Downloads and analyzes GitHub Release info to display download links for my projects that exist as executables.
 
 2. Swap the site theme around with the footer links
 
