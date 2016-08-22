@@ -4,6 +4,8 @@
     [clojure.string :as str]
     [cljs.spec :as s]
     [ajax.core :as ajax]
+    [camel-snake-kebab.core :refer [->kebab-case-keyword]]
+    [camel-snake-kebab.extras :refer [transform-keys]]
     [re-frame.core
       :refer [reg-event-db reg-event-fx path trim-v after
               dispatch]]
@@ -52,7 +54,9 @@
   :good-url-result
   (fn [db [_ result]]
     (let [{asset-data :assets} result
-          download-map (analysis/build-download-map asset-data)]
+          download-map (as-> asset-data v
+                         (transform-keys ->kebab-case-keyword v)
+                         (analysis/build-download-map v))]
       (assoc db :downloads download-map))))
 
 ;; On failing to receive GitHub release info, show user the download

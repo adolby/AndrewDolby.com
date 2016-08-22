@@ -1,5 +1,7 @@
 (ns app.analysis
-  "GitHub releases analysis")
+  "GitHub releases URL analysis"
+  (:require
+    [taoensso.timbre :as timbre :refer-macros [info]]))
 
 (defn get-os
   [url]
@@ -27,7 +29,7 @@
 
 (defn analyze-download-url
   [asset-info]
-  (let [{url :browser_download_url} asset-info]
+  (let [{url :browser-download-url} asset-info]
     {:os (get-os url) :word-size (get-word-size url)
      :file-type (get-file-type url) :url url}))
 
