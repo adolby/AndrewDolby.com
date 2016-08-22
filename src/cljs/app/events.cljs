@@ -40,7 +40,7 @@
 ;; Get list of downloads from GitHub releases, then update in DB
 (reg-event-fx
   :load-download-urls
-  (fn [{:keys [db]} [_ url]]
+  (fn [_ [_ url]]
     {:http-xhrio {:method :get
                   :uri url
                   :timeout 8000
