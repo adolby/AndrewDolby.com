@@ -25,6 +25,9 @@
                    (kioo/set-attr :href url)
                    (kioo/set-attr :download "")
                    (kioo/content [:img {:src (get icon-files
+                                                  file-type)
+                                        :alt (str "Download "
+                                                  word-size
                                                   file-type)}]
                                  [:span
                                    (if (str/blank? word-size)
@@ -39,7 +42,8 @@
   [category files]
   {[:span] (kioo/content [:h3 {:class "inline-heading"} category]
                          [:img {:class "os-icon"
-                                :src (get icon-files category)}])
+                                :src (get icon-files category)
+                                :alt category}])
    [:ul] (kioo/do->
            (kioo/set-class "align horizontal link-list")
            (kioo/content (map kryvos-download-item files)))})
