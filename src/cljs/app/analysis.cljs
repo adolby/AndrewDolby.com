@@ -8,7 +8,7 @@
   (cond
     (boolean (re-find #"windows" url)) "Windows"
     (boolean (re-find #"linux" url)) "Linux"
-    (boolean (re-find #".dmg" url)) "Mac OS X"
+    (boolean (re-find #"mac|.dmg" url)) "Mac OS X"
     :else "Other"))
 
 (defn get-word-size
