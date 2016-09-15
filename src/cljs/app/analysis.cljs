@@ -8,7 +8,7 @@
   (cond
     (boolean (re-find #"windows" url)) "Windows"
     (boolean (re-find #"linux" url)) "Linux"
-    (boolean (re-find #"mac|.dmg" url)) "Mac OS X"
+    (boolean (re-find #"mac|.dmg" url)) "macOS"
     :else "Other"))
 
 (defn get-word-size
@@ -24,7 +24,7 @@
   (cond
     (boolean (re-find #".zip" url)) "Portable"
     (boolean (re-find #".tar.gz" url)) "Portable"
-    (boolean (re-find #".dmg" url)) "Disk Image"
+    (boolean (re-find #"mac|.dmg" url)) "Disk Image"
     :else "Installer"))
 
 (defn analyze-download-url
