@@ -9,7 +9,7 @@
 (def icon-files
   {"Windows" "images/windows.svg"
    "Linux" "images/linux.svg"
-   "Mac OS X" "images/apple.svg"
+   "macOS" "images/apple.svg"
    "Other" ""
    "Installer" "images/monitor.svg"
    "Portable" "images/archive.svg"
