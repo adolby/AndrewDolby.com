@@ -13,7 +13,8 @@
    "Other" ""
    "Installer" "images/monitor.svg"
    "Portable" "images/archive.svg"
-   "Disk Image" "images/disc.svg"})
+   "Disk Image" "images/disc.svg"
+   "Disk Image Archive" "images/disc.svg"})
 
 (def themes ["default" "green" "red" "blue"])
 
