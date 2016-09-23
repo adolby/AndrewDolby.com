@@ -22,9 +22,10 @@
 (defn get-file-type
   [url]
   (cond
+    (boolean (re-find #"mac" url)) "Disk Image Archive"
+    (boolean (re-find #".dmg" url)) "Disk Image"
     (boolean (re-find #".zip" url)) "Portable"
     (boolean (re-find #".tar.gz" url)) "Portable"
-    (boolean (re-find #"mac|.dmg" url)) "Disk Image"
     :else "Installer"))
 
 (defn analyze-download-url
