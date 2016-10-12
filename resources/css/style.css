@@ -12,7 +12,7 @@ main {
 }
 
 section {
-  margin: 2.5rem 2.5%;
+  margin: 2.5rem 0;
   padding: 1.75rem;
   display: flex;
   flex-flow: column;
