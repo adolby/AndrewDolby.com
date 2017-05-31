@@ -2,7 +2,7 @@
   "Application re-frame events"
   (:require
     [clojure.string :as str]
-    [cljs.spec :as s]
+    [clojure.spec.alpha :as s]
     [ajax.core :as ajax]
     [camel-snake-kebab.core :refer [->kebab-case-keyword]]
     [camel-snake-kebab.extras :refer [transform-keys]]

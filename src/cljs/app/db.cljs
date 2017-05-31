@@ -2,7 +2,7 @@
   "Application re-frame database"
   (:require [clojure.string :as str]
             [cljs.reader]
-            [cljs.spec :as s]
+            [clojure.spec.alpha :as s]
             [taoensso.timbre :as timbre :refer-macros [info]]))
 
 (s/def ::theme string?)
