@@ -13,8 +13,8 @@
    :downloads {}})
 
 (defn local-store->theme
-  "Read in last theme from LS, and process into a map we can merge
-   into app-db."
+  "Read in last theme from LS, and process into a map that can be
+   merged into app-db"
   []
   (let [theme (.getItem js/localStorage "theme")]
     (if (str/blank? theme)
@@ -22,6 +22,6 @@
       theme)))
 
 (defn theme->local-store
-  "Puts current theme into LS"
+  "Put current theme into LS"
   [theme]
   (.setItem js/localStorage "theme" theme))

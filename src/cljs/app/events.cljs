@@ -46,12 +46,12 @@
                   :timeout 8000
                   :response-format (ajax/json-response-format
                                      {:keywords? true})
-                  :on-success [:good-url-result]
-                  :on-failure [:bad-url-result]}}))
+                  :on-success [:result-success]
+                  :on-failure [:result-fail]}}))
 
 ;; On successfully receiving GitHub release info, proceed to analysis
 (reg-event-db
-  :good-url-result
+  :result-success
   (fn [db [_ result]]
     (let [{asset-data :assets} result
           download-map (as-> asset-data v
@@ -62,7 +62,7 @@
 ;; On failing to receive GitHub release info, show user the download
 ;; link on for releases on GitHub
 (reg-event-db
-  :bad-url-result
+  :result-fail
   (fn [db [_ _]]
     db))
 
