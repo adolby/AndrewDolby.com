@@ -10,9 +10,7 @@ My profile website. https://www.andrewdolby.com
 
 ## Implementation Details
 
-1. Uses re-frame and Reagent. re-frame is a Flux implementation that supplies a reactive flow template for structuring a ClojureScript app. Reagent is a ClojureScript React wrapper (and more!) that provides great performance while taking care of view updates as you change your application state.
-
-2. Template from valid HTML markup with kioo
+Renders download list and theme buttons with re-frame and Reagent. re-frame is a Flux implementation that supplies a reactive flow template for structuring a ClojureScript app. Reagent is a ClojureScript React wrapper (and more!) that provides great performance while taking care of view updates as you change your application state.
 
 ## License
 MIT

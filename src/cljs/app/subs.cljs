@@ -8,7 +8,7 @@
   (fn [db _]
     (:theme db)))
 
-;; Subscription for showing download urls
+;; Subscription for showing download URLs
 (reg-sub
   :downloads
   (fn [db _]

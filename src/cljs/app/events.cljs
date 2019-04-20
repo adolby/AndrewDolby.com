@@ -2,7 +2,7 @@
   "Application re-frame events"
   (:require
     [clojure.string :as str]
-    [clojure.spec.alpha :as s]
+    [clojure.spec.alpha :as spec]
     [ajax.core :as ajax]
     [camel-snake-kebab.core :refer [->kebab-case-keyword]]
     [camel-snake-kebab.extras :refer [transform-keys]]
@@ -20,9 +20,9 @@
 (defn check-and-throw
   "Throw an exception if db doesn't match the spec"
   [a-spec db]
-  (when-not (s/valid? a-spec db)
+  (when-not (spec/valid? a-spec db)
     (throw (ex-info "spec check failed: "
-             {:problems (s/explain-str a-spec db)}))))
+             {:problems (spec/explain-str a-spec db)}))))
 
 (def check-spec-interceptor
   (after (partial check-and-throw :app.db/db)))
@@ -60,13 +60,13 @@
       (assoc db :downloads download-map))))
 
 ;; On failing to receive GitHub release info, show user the download
-;; link on for releases on GitHub
+;; link for releases on GitHub
 (reg-event-db
   :result-fail
   (fn [db [_ _]]
     db))
 
-;; Update current theme in the DB and also update it in the LS
+;; Update current theme in the DB and also update it in the LocalStorage
 (reg-event-db
   :update-theme
   [check-spec-interceptor (path :theme) ->local-store trim-v]
