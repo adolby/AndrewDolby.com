@@ -9,7 +9,6 @@
    [reagent "0.8.1"]
    [re-frame "0.10.6"]
    [day8.re-frame/http-fx "0.1.6"]
-   [kioo "0.5.0" :exclusions [cljsjs/react]]
    [com.taoensso/timbre "4.10.0"]
 
    [adzerk/boot-cljs "LATEST" :scope "test"]
