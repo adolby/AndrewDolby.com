@@ -23,4 +23,4 @@ touch .
 
 git add -A .
 git commit -m "Deploy to GitHub Pages - ${TRAVIS_COMMIT}"
-git push --force upstream master > /dev/null 2>&1
+git push --force upstream master
