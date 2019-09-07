@@ -1,9 +1,6 @@
 sudo: false
 dist: trusty
 language: java
-env:
-  global:
-    - secure: Up/pPCFDt32GiRNsBak0mjxUslto6+OjJkUUni5nOg4LDw9fErDlyToCUD6R/ZKfrgQ6iQAL81Bo99+GPDgiRhUh/AdTMyguKtpVGeXCe/qKoO+hUj3B+Qk8iHIUva8zybJPIyLkKwUB/ghTSk/XQgn7/vofg1UtOU6TOvaRiNY=
 jdk:
 - oraclejdk8
 cache:
