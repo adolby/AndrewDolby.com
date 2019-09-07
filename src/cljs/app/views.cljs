@@ -5,13 +5,15 @@
             [re-frame.core :refer [subscribe dispatch]]))
 
 (def icon-files
-  {"Windows" "images/windows.svg"
+  {"Android" "images/android.svg"
+   "Windows" "images/windows.svg"
    "Linux" "images/linux.svg"
    "macOS" "images/apple.svg"
    "Installer" "images/monitor.svg"
    "Portable" "images/archive.svg"
    "Disk Image" "images/disc.svg"
    "Disk Image Archive" "images/disc.svg"
+   "APK" "images/archive.svg"
    "Other" ""})
 
 (def themes ["default" "green" "red" "blue"])
