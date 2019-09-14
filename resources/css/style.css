@@ -203,6 +203,11 @@ nav ul li:last-of-type a {
   height: auto;
 }
 
+.logo-image {
+  height: auto;
+  width: 240px;
+}
+
 .project-icon {
   height: 2rem;
   margin-left: 0.9rem;
