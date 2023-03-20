@@ -2,25 +2,24 @@
 
 set -o errexit -o nounset
 
-if [ "${TRAVIS_BRANCH}" != "master" ]
-then
-  echo "This commit was made against ${TRAVIS_BRANCH}, not master! No deploy!"
-  exit 0
-fi
+boot -u
+boot -V
+
+boot prod
 
 rm -rf .git
 cd target
 rm -rf app.cljs.edn
 
 git init
-git config user.name "Travis CI"
+git config user.name "GitHub Actions"
 git config user.email "andrewdolby@gmail.com"
 git config --global push.default simple
-git remote add upstream "https://${GH_TOKEN}@github.com/adolby/adolby.github.io.git"
+git remote add upstream "https://${PAGES_TOKEN}@github.com/adolby/adolby.github.io.git"
 
 echo "andrewdolby.com" > CNAME
 touch .
 
 git add -A .
-git commit -m "Deploy to GitHub Pages - ${TRAVIS_COMMIT}"
+git commit -m "Deploy to GitHub Pages"
 git push --force upstream master
