@@ -1,0 +1,40 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - 'main'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  SOURCE_DIR: ${{ github.workspace }}
+
+jobs:
+  clojure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: (1) Checkout
+        uses: actions/checkout@v3
+
+      - name: (2) Prepare Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '8'
+
+      - name: (3) Install Clojure tools
+        uses: DeLaGuardo/setup-clojure@10.2
+        with:
+          boot: 2.8.3
+
+      - name: (4) Deploy
+        env: # Or as an environment variable
+          PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        working-directory: ${{ env.SOURCE_DIR }}
+        run: |
+          cd "${{ env.SOURCE_DIR }}"
+          chmod +x deploy.sh
+          ./deploy.sh
