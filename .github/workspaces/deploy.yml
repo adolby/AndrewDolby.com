@@ -1,8 +1,9 @@
 name: Deploy
 on:
   push:
-    branches:
-      - 'main'
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 defaults:
   run:
@@ -31,7 +32,7 @@ jobs:
           boot: 2.8.3
 
       - name: (4) Deploy
-        env: # Or as an environment variable
+        env:
           PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
         working-directory: ${{ env.SOURCE_DIR }}
         run: |
